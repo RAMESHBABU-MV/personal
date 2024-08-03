@@ -1,4 +1,4 @@
-class math1:
+class math:
     def fibnaci(self,n:int)-> int:
         self.n = n
         if n==1:
