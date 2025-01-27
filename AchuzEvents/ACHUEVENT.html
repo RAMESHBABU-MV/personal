@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACHUZ EVENTS</title>
+    <link rel="stylesheet" href="ACHUEVENT.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="TastyBites Logo" class="logo">
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+        </nav>
+
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Exceptional Catering Services for Your Special Events</h1>
+            <button class="cta-button">View Our Menu</button>
+        </div>
+    </section>
+
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.right = '0';
+            navLinks.style.background = '#ffffff';
+            navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navLinks.style.display = 'none';
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                navLinks.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
